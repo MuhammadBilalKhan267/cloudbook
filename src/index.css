@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+i {
+  cursor: pointer;
+}
+
+.card-body i:hover {
+  opacity: 0.5; /* Reduce opacity on hover */
+}

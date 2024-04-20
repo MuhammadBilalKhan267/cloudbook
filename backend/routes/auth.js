@@ -37,22 +37,14 @@ router.post('/createUser', [
             email: req.body.email
         })
 
-        const data = {
-            user: {
-                id: user.id
-            }
-        }
-
-
-        const authToken = jwt.sign(data, JWT_SECRET);
 
 
 
-        res.send({ authToken });
+        res.status(200).json({ success: "User created successfully"});
     }
     catch (error) {
         console.error(error.message);
-        res.status(500).json("Unexpected error!");
+        res.status(500).json({error: "Unexpected error!"});
     }
 });
 
@@ -92,11 +84,11 @@ router.post('/login', [
 
 
 
-        res.send({ authToken });
+        res.status(200).json({ authToken });
     }
     catch (error) {
         console.error(error.message);
-        res.status(500).json("Unexpected error!");
+        res.status(500).json({error: "Unexpected error!"});
     }
 
 })
@@ -113,7 +105,7 @@ router.post('/getuser', fetchuser
         }
         catch (error) {
             console.error(error.message);
-            res.status(500).json("Unexpected error!");
+            res.status(500).json({error: "Unexpected error!"});
         }
 
     })
@@ -121,7 +113,7 @@ router.post('/getuser', fetchuser
 
 
 router.get('/', (req, res) => {
-    res.redirect('http://localhost:5000');
+    res.redirect('http://localhost:3000');
 });
 
 module.exports = router
